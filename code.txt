@@ -1,0 +1,54 @@
+Issues that need troubleshooting in the Subscription Tracker codebase:
+
+1. PremiumScreen.tsx (src/screens/PremiumScreen.tsx):
+   - The file is completely empty. Needs full implementation for the premium upgrade screen.
+
+2. HomeScreen.tsx (src/screens/HomeScreen.tsx):
+   - Unused renderItem function defined but not used in the component.
+   - Duplicate subscription rendering logic - subscriptions are mapped directly in JSX instead of using the defined renderItem.
+   - formatDate function is defined but never called in the component.
+
+3. SettingsScreen.tsx (src/screens/SettingsScreen.tsx):
+   - Settings state is initialized but not loaded from AsyncStorage on component mount.
+   - Settings changes are not saved to AsyncStorage - they reset on app restart.
+   - No persistence for user preferences (currency, notifications, theme, sound).
+   - Unused imports: useEffect, StyleSheet.
+   - Implicit 'any' types in setSettings callbacks.
+
+4. DashboardScreen.tsx (src/screens/DashboardScreen.tsx):
+   - Imports BarChart from react-native-chart-kit but uses LineChart instead (unused import).
+   - Imports AsyncStorage but never uses it.
+   - Defines TimeRange type but never uses it.
+   - Defines chartData variable but never uses it.
+   - Chart data uses hardcoded mock historical data instead of real subscription history.
+   - mockSubscriptions array is defined but only used as error fallback.
+   - Unused imports: useEffect, StyleSheet, BarChart, AsyncStorage.
+   - Implicit 'any' types in reduce and map callbacks.
+
+5. SubscriptionForm.tsx (src/components/SubscriptionForm.tsx):
+   - Imports 'moment' library but it's not installed (confirmed by TypeScript errors).
+   - Date parsing and renewal date calculation will fail without moment.
+   - Start date input is a plain TextInput without date picker, prone to invalid date formats.
+   - Renewal date calculation may not handle edge cases properly (e.g., leap years, month boundaries).
+   - Unused imports: useEffect, StyleSheet.
+
+6. Navigation/index.tsx (src/navigation/index.tsx):
+   - RootStackParamList includes 'Timeline' screen but no corresponding screen component exists.
+   - Syntax error: '}' expected at line 146 (possible missing closing brace).
+
+7. AddSubscriptionScreen.tsx (src/screens/AddSubscriptionScreen.tsx):
+   - Unused import: NativeStackScreenProps.
+
+8. EditSubscriptionScreen.tsx (src/screens/EditSubscriptionScreen.tsx):
+   - Unused import: NativeStackScreenProps.
+
+9. SubscriptionService.ts (src/services/SubscriptionService.ts):
+   - ID generation uses Date.now().toString() which could potentially create duplicate IDs if multiple subscriptions are added in rapid succession.
+
+10. General issues:
+    - Many TypeScript errors due to missing dependencies (React, React Native, etc.) but these are environment-related.
+    - No error boundaries or global error handling.
+    - No loading states for async operations in some components.
+    - Hardcoded colors and styles could be centralized in a theme file.
+    - No unit tests for any components or services.
+    - Implicit 'any' types in several places need proper typing.
