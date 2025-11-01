@@ -4,15 +4,14 @@
 
 **"React Native app for tracking subscriptions with minimalistic UI/UX."**
 
--
+
 
 ## ✨ Features
 
 -   **Subscription Tracking:** Easily add, view, and manage all your active and upcoming subscriptions in one place.
 -   **Minimalistic UI/UX:** Enjoy a clutter-free and highly intuitive user experience focused on essential functionality.
 -   **Payment Reminders:** Get timely notifications before a subscription renews, helping you avoid unexpected charges.
-- 
-- 
+  
 ## 🛠️ Tech Stack
 
 **Mobile:**
@@ -86,7 +85,7 @@ subscrillo/
 
 ## 📄 License
 
-This project is licensed under the [LICENSE_NAME](LICENSE) - see the [LICENSE](LICENSE) file for details. <!-- TODO: Specify actual license and create LICENSE file (e.g., MIT, Apache 2.0) -->
+
 
 ## 🙏 Acknowledgments
 
